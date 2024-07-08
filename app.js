@@ -5,7 +5,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const middleware = require('./utils/middleware')
-const blogsRouter = require('./controllers/blogs.js')
+const budgetsRouter = require('./controllers/blogs.js')
 
 mongoose.set('strictQuery', false)
 mongoose
@@ -22,6 +22,6 @@ const app = express()
 app.use(express.json())
 // app.use(cors)
 
-app.use('/api/blogs', blogsRouter)
+app.use('/api/budgets', budgetsRouter)
 
 module.exports = app
