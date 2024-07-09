@@ -8,12 +8,6 @@ const purchaseSchema = new mongoose.Schema({
   amount: { type: Number, require: true },
 })
 
-const Purchase = mongoose.model('Purchase', purchaseSchema)
+const Purchase = mongoose.model('Purchases', purchaseSchema)
 
-const limitSchema = new mongoose.Schema({
-  limit: Number,
-})
-
-const Limit = mongoose.model('Limit', limitSchema)
-
-module.exports = { Purchase, Limit }
+module.exports = Purchase

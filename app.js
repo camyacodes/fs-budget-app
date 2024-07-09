@@ -1,11 +1,13 @@
 // create express app and integrate it with middleware
 const config = require('./utils/config')
-const logger = require('./utils/logger')
 const express = require('express')
+const app = express()
+const logger = require('./utils/logger')
+const middleware = require('./utils/middleware')
+
 const cors = require('cors')
 const mongoose = require('mongoose')
-const middleware = require('./utils/middleware')
-const budgetsRouter = require('./controllers/blogs.js')
+const purchasesRouter = require('./controllers/Purchases')
 
 mongoose.set('strictQuery', false)
 mongoose
@@ -17,11 +19,13 @@ mongoose
     logger.error('Error connecting to MongoDB', error.message)
   })
 
-const app = express()
-
+app.use(cors())
 app.use(express.json())
-// app.use(cors)
+app.use(middleware.morganLog)
 
-app.use('/api/budgets', budgetsRouter)
+app.use('/api/purchases', purchasesRouter)
+
+app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandler)
 
 module.exports = app

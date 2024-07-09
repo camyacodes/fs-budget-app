@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/purchases
+Content-Type: application/json
+
+  {
+    "place": "Gas Station",
+    "category": "Transport",
+    "amount": 25.00
+  }
