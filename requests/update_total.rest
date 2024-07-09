@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/totals/668db67a85d736d5e2172a24
+Content-Type: application/json
+
+{
+    "limit": 300,
+    "total_spent": 100
+}

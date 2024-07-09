@@ -8,6 +8,7 @@ const middleware = require('./utils/middleware')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const purchasesRouter = require('./controllers/Purchases')
+const totalsRouter = require('./controllers/Totals')
 
 mongoose.set('strictQuery', false)
 mongoose
@@ -24,6 +25,7 @@ app.use(express.json())
 app.use(middleware.morganLog)
 
 app.use('/api/purchases', purchasesRouter)
+app.use('/api/totals', totalsRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

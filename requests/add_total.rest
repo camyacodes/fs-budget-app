@@ -1,0 +1,3 @@
+POST http://localhost:3001/api/totals
+Content-Type: application/json
+
