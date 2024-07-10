@@ -1,3 +1,5 @@
+var _ = require('lodash')
+
 const dummy = () => {
   return 1
 }
@@ -25,4 +27,14 @@ const biggestPurchase = (purchases) => {
   return purchaseAmtArr.length === 0 ? 0 : Math.max(...purchaseAmtArr)
 }
 
-module.exports = { dummy, totalSpent, biggestPurchase }
+// function that returns the category with the biggest purchase
+const largestCategory = (purchases) => {
+  const largestAmt = biggestPurchase(purchases)
+  const index = _.findIndex(purchases, { amount: largestAmt })
+  return {
+    category: purchases[index].category,
+    amount: purchases[index].amount,
+  }
+}
+
+module.exports = { dummy, totalSpent, biggestPurchase, largestCategory }

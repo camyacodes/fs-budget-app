@@ -104,4 +104,10 @@ describe('biggest purchase', () => {
 
     assert.strictEqual(result, 45.3)
   })
+
+  test('has category logged with it', () => {
+    const result = listHelper.largestCategory(listWithManyPurchases)
+
+    assert.deepStrictEqual(result, { category: 'Food', amount: 45.3 })
+  })
 })
