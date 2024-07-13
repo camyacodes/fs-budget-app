@@ -1,9 +1,5 @@
 var _ = require('lodash')
 
-const dummy = () => {
-  return 1
-}
-
 const totalSpent = (purchases) => {
   // get amounts from all purchases and add them up into one total
   // purchases is an array of objects
@@ -37,4 +33,4 @@ const largestCategory = (purchases) => {
   }
 }
 
-module.exports = { dummy, totalSpent, biggestPurchase, largestCategory }
+module.exports = { totalSpent, biggestPurchase, largestCategory }

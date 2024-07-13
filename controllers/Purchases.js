@@ -3,14 +3,10 @@ const purchasesRouter = require('express').Router()
 const Purchase = require('../models/purchase')
 
 // Find all purchases
-purchasesRouter.get('/', (request, response) => {
-  Purchase.find({})
-    .then((purchase) => {
-      response.json(purchase)
-    })
-    .catch((error) => {
-      response.status(400).json(error.message)
-    })
+purchasesRouter.get('/', async (request, response) => {
+  const purchases = await Purchase.find({})
+
+  response.json(purchases)
 })
 
 // Add a purchase
