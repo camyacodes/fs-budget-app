@@ -3,16 +3,16 @@ const mongoose = require('mongoose')
 
 const purchaseSchema = new mongoose.Schema({
   date: Date,
-  place: { type: String, require: true },
-  category: { type: String, require: true },
-  amount: { type: Number, require: true },
+  place: { type: String, required: true },
+  category: { type: String, required: true },
+  amount: { type: Number, required: true },
 })
 
 purchaseSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
-    delete returnedObject.id
-    delete returnedObject._v
+    delete returnedObject._id
+    delete returnedObject.__v
   },
 })
 

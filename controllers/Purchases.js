@@ -10,7 +10,7 @@ purchasesRouter.get('/', async (request, response) => {
 })
 
 // Add a purchase
-purchasesRouter.post('/', (request, response, next) => {
+purchasesRouter.post('/', async (request, response) => {
   const body = request.body
 
   const purchase = new Purchase({
@@ -20,12 +20,9 @@ purchasesRouter.post('/', (request, response, next) => {
     amount: body.amount,
   })
 
-  purchase
-    .save()
-    .then((savedPurchase) => {
-      response.json(savedPurchase)
-    })
-    .catch((error) => next(error))
+  const savedPurchase = await purchase.save()
+
+  response.status(201).json(savedPurchase)
 })
 
 module.exports = purchasesRouter
